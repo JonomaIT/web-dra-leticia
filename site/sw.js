@@ -1,6 +1,6 @@
 // Network-first: sempre tenta a versão nova; o cache só serve offline.
 // Ao mudar a lista abaixo, suba a versão (o cache antigo é apagado na ativação).
-const CACHE_NAME = 'dra-leticia-v3.0.0'
+const CACHE_NAME = 'dra-leticia-v3.0.1'
 const PRECACHE = [
   '/',
   '/index.html',
