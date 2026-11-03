@@ -1,153 +1,139 @@
 /* =============================================================
-   Dra. Letícia Penin — scripts
+   Dra. Letícia Penin — scripts (sem dependências)
+   Tudo aqui melhora a página; sem JS ela continua completa.
    ============================================================= */
 
-const header = document.querySelector('#header')
-const nav = document.querySelector('#header nav')
-const toggles = document.querySelectorAll('nav .toggle')
-const navLinks = document.querySelectorAll('nav .menu a')
-const menuButton = document.querySelector('.toggle.icon-menu')
+const header = document.querySelector('.site-header')
+const menuToggle = document.querySelector('.menu-toggle')
+const menuLinks = document.querySelectorAll('.menu a')
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-/* ---- Menu mobile (abrir/fechar) ---- */
+/* ---- Menu do celular ---- */
 function setMenu(open) {
-  nav.classList.toggle('show', open)
+  header.classList.toggle('menu-open', open)
   document.body.style.overflow = open ? 'hidden' : ''
-  if (menuButton) menuButton.setAttribute('aria-expanded', String(open))
+  menuToggle.setAttribute('aria-expanded', String(open))
+  menuToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu')
+  menuToggle.classList.toggle('icon-menu', !open)
+  menuToggle.classList.toggle('icon-close', open)
 }
 
-toggles.forEach((el) => el.addEventListener('click', () => setMenu(!nav.classList.contains('show'))))
-navLinks.forEach((link) => link.addEventListener('click', () => setMenu(false)))
-
-/* Fechar com ESC e focar o botão do menu */
+menuToggle.addEventListener('click', () => setMenu(!header.classList.contains('menu-open')))
+menuLinks.forEach((link) => link.addEventListener('click', () => setMenu(false)))
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && nav.classList.contains('show')) {
+  if (e.key === 'Escape' && header.classList.contains('menu-open')) {
     setMenu(false)
-    menuButton?.focus()
+    menuToggle.focus()
   }
 })
+window.matchMedia('(min-width: 992px)').addEventListener('change', (e) => e.matches && setMenu(false))
 
-/* ---- Vídeo da seção "Sobre": play/pause conforme visibilidade + fade ---- */
-const video = document.querySelector('#about video')
-if (video) {
-  const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        video.play().catch(() => {})
-      } else {
-        video.pause()
-      }
-    })
-  })
-  videoObserver.observe(video)
-
-  video.addEventListener('timeupdate', () => {
-    const timeLeft = video.duration - video.currentTime
-    if (timeLeft <= 0.5) {
-      video.style.opacity = timeLeft / 0.5
-    } else if (video.currentTime <= 0.5) {
-      video.style.opacity = video.currentTime / 0.5
-    } else {
-      video.style.opacity = 1
-    }
-  })
-}
-
-/* ---- Carrossel de depoimentos (Swiper) ---- */
-new Swiper('.swiper', {
-  slidesPerView: 1,
-  spaceBetween: 16,
-  loop: true,
-  grabCursor: true,
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-    bulletActiveClass: 'swiper-pagination-bullet-active',
-  },
-  keyboard: { enabled: true, onlyInViewport: true },
-  a11y: {
-    prevSlideMessage: 'Depoimento anterior',
-    nextSlideMessage: 'Próximo depoimento',
-    paginationBulletMessage: 'Ir para depoimento {{index}}',
-  },
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true,
-  },
-  breakpoints: {
-    768: { slidesPerView: 2 },
-    1024: { slidesPerView: 3 },
-  },
-})
-
-/* ---- Animações de entrada (ScrollReveal) ---- */
-if (window.ScrollReveal) {
-  const sr = ScrollReveal({ origin: 'bottom', distance: '30px', duration: 700, reset: false })
-  sr.reveal(
-    `#home .image, #home .text,
-     #about .image, #about .text,
-     #services header, #services .card,
-     #testimonials header, #testimonials .testimonials,
-     #contact .text, #contact .links,
-     footer .brand, footer .social`,
-    { interval: 100 }
-  )
-}
-
-/* ---- Header com sombra ao rolar + link ativo da seção atual ---- */
-const navHeight = header.offsetHeight
-const sections = document.querySelectorAll('main section[id]')
+/* ---- Cabeçalho com sombra ao rolar + link da seção atual ---- */
+const sections = [...document.querySelectorAll('main section[id]')]
 
 function onScroll() {
-  header.classList.toggle('scroll', window.scrollY >= navHeight)
-
+  header.classList.toggle('is-scrolled', window.scrollY > 8)
   const checkpoint = window.scrollY + window.innerHeight / 2
-  sections.forEach((section) => {
-    const id = section.id
-    const inView = checkpoint >= section.offsetTop && checkpoint <= section.offsetTop + section.offsetHeight
-    document.querySelector(`nav .menu a[href*="${id}"]`)?.classList.toggle('active', inView)
-  })
-}
-
-/* ---- Utilitários ---- */
-function throttle(fn, limit) {
-  let waiting = false
-  return function (...args) {
-    if (!waiting) {
-      fn.apply(this, args)
-      waiting = true
-      setTimeout(() => (waiting = false), limit)
-    }
+  for (const section of sections) {
+    const inView = checkpoint >= section.offsetTop && checkpoint < section.offsetTop + section.offsetHeight
+    const link = document.querySelector(`.menu a[href="#${section.id}"]`)
+    if (!link) continue
+    if (inView) link.setAttribute('aria-current', 'true')
+    else link.removeAttribute('aria-current')
   }
 }
 
-function debounce(fn, wait) {
-  let timeout
-  return function (...args) {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => fn.apply(this, args), wait)
+let ticking = false
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      onScroll()
+      ticking = false
+    })
+    ticking = true
   }
+}, { passive: true })
+onScroll()
+
+/* ---- Entrada das seções ao rolar ---- */
+const revealObserver = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible')
+      revealObserver.unobserve(entry.target)
+    }
+  }
+}, { rootMargin: '0px 0px -10% 0px' })
+document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el))
+
+/* ---- Vídeo do "Sobre": só baixa e toca quando aparece ---- */
+const video = document.querySelector('#about video')
+if (video && !reducedMotion) {
+  new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) video.play().catch(() => {})
+    else video.pause()
+  }, { threshold: 0.25 }).observe(video)
 }
 
-window.addEventListener('scroll', throttle(onScroll, 100))
+/* ---- Carrossel de depoimentos: pontos, setas e troca automática ---- */
+document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+  const track = carousel.querySelector('.carousel__track')
+  const slides = [...track.children]
+  const controls = carousel.querySelector('.carousel__controls')
+  const dotsBox = carousel.querySelector('[data-dots]')
 
-/* Fechar o menu ao redimensionar para desktop */
-window.addEventListener(
-  'resize',
-  debounce(() => {
-    if (window.innerWidth >= 992 && nav.classList.contains('show')) {
-      setMenu(false)
-    }
-  }, 200)
-)
+  const perView = () => Math.max(1, Math.round(track.clientWidth / slides[0].getBoundingClientRect().width))
+  const pages = () => Math.max(1, slides.length - perView() + 1)
+  const current = () => Math.round(track.scrollLeft / (slides[0].getBoundingClientRect().width + 16))
+  const goTo = (i) => {
+    const target = slides[Math.max(0, Math.min(i, pages() - 1))]
+    track.scrollTo({ left: target.offsetLeft - track.offsetLeft - 8, behavior: reducedMotion ? 'auto' : 'smooth' })
+  }
 
-/* ---- Ano atual no rodapé ---- */
+  function renderDots() {
+    dotsBox.replaceChildren(...Array.from({ length: pages() }, (_, i) => {
+      const dot = document.createElement('button')
+      dot.type = 'button'
+      dot.className = 'carousel__dot'
+      dot.setAttribute('aria-label', `Ir para o depoimento ${i + 1}`)
+      dot.addEventListener('click', () => goTo(i))
+      return dot
+    }))
+    updateDots()
+  }
+
+  function updateDots() {
+    const active = Math.min(current(), pages() - 1)
+    dotsBox.querySelectorAll('.carousel__dot').forEach((dot, i) => dot.setAttribute('aria-current', String(i === active)))
+  }
+
+  carousel.querySelector('[data-prev]').addEventListener('click', () => goTo(current() - 1))
+  carousel.querySelector('[data-next]').addEventListener('click', () => goTo(current() + 1 >= pages() ? 0 : current() + 1))
+  track.addEventListener('scroll', () => requestAnimationFrame(updateDots), { passive: true })
+  window.addEventListener('resize', renderDots)
+  controls.hidden = false
+  renderDots()
+
+  // Troca sozinha a cada 6 s; para com o mouse em cima, com foco dentro ou com "movimento reduzido".
+  if (!reducedMotion) {
+    let paused = false
+    const pause = () => (paused = true)
+    const resume = () => (paused = false)
+    carousel.addEventListener('mouseenter', pause)
+    carousel.addEventListener('mouseleave', resume)
+    carousel.addEventListener('focusin', pause)
+    carousel.addEventListener('focusout', resume)
+    setInterval(() => {
+      if (!paused && !document.hidden) goTo(current() + 1 >= pages() ? 0 : current() + 1)
+    }, 6000)
+  }
+})
+
+/* ---- Ano no rodapé ---- */
 const yearEl = document.getElementById('year')
 if (yearEl) yearEl.textContent = new Date().getFullYear()
 
-/* ---- Service Worker (PWA) ---- */
+/* ---- Service worker (funciona offline com a última versão vista) ---- */
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {})
-  })
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}))
 }

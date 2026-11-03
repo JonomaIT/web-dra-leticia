@@ -2,28 +2,28 @@
 <html lang="pt-BR">
 
 <head>
-  <!-- Page Info -->
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dra. Letícia Penin - Dentista em Fortaleza-CE | Estética Dental</title>
   <meta name="description" content="Dra. Letícia Penin - Dentista em Fortaleza-CE. Estética dental, clareamento, prótese e clínica geral. Atendimento humanizado. Agende sua consulta!" />
   <meta name="keywords" content="dentista fortaleza, estética dental fortaleza, dentista fátima fortaleza, dentista pici fortaleza, marv clinic, harmony premium business, clareamento dental fortaleza, prótese dentária fortaleza, dentista ceará" />
   <meta name="author" content="Dra. Letícia Penin" />
-  
+  <link rel="canonical" href="https://draleticiapenin.com.br/" />
+
   <!-- Open Graph -->
   <meta property="og:title" content="Dra. Letícia Penin - Cirurgiã Dentista" />
   <meta property="og:description" content="Cirurgiã-dentista com atuação em estética dental, prótese e clínica geral. Atendimento humanizado com tecnologia moderna." />
   <meta property="og:image" content="https://draleticiapenin.com.br/draleticiapenin-foto.jpeg" />
   <meta property="og:url" content="https://draleticiapenin.com.br" />
   <meta property="og:type" content="website" />
-  
+  <meta property="og:locale" content="pt_BR" />
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Dra. Letícia Penin - Cirurgiã Dentista" />
   <meta name="twitter:description" content="Cirurgiã-dentista com atuação em estética dental, prótese e clínica geral." />
   <meta name="twitter:image" content="https://draleticiapenin.com.br/draleticiapenin-foto.jpeg" />
-  
+
   <!-- Structured Data -->
   <script type="application/ld+json">
   [
@@ -119,133 +119,128 @@
     }
   ]
   </script>
-  
-  <!-- Favicon -->
+
+  <!-- Ícone e PWA -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
   <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
-  
-  <!-- PWA Manifest -->
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#473835">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Dra. Letícia">
-  <meta name="msapplication-TileColor" content="#473835">
 
-  <!-- Preload Critical Resources -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap" as="style" />
-  <link rel="preload" href="style.css" as="style" />
-  
-  <!-- Icons -->
-  <link rel="stylesheet" href="assets/icomoon/style.css">
+  <!-- JS ativo: as seções entram ao rolar. Sem JS, tudo aparece normalmente. -->
+  <script>document.documentElement.classList.add('js')</script>
 
-  <!-- Swiper -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css" />
-
-  <!-- Style -->
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap"
-    rel="stylesheet" />
+  <!-- Tudo local: nenhuma fonte, estilo ou script de terceiros -->
+  <link rel="preload" href="fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="img/hero-480.webp" as="image" type="image/webp" media="(max-width: 600px)" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="assets/icomoon/style.css" />
 </head>
 
 <body>
-  <!-- Skip Navigation -->
-  <a href="#main-content" class="skip-nav" aria-label="Pular para o conteúdo principal">Pular para o conteúdo</a>
-  
-  <header id="header" role="banner">
-    <nav class="container" role="navigation" aria-label="Menu principal">
-      <a class="logo" href="#home" aria-label="Dra. Letícia Penin - Página inicial">Dra. Letícia<span>Penin</span></a>
-      <div class="menu">
-        <ul class="grid" role="menubar">
-          <li role="none"><a class="title" href="#home" role="menuitem">Início</a></li>
-          <li role="none"><a class="title" href="#about" role="menuitem">Sobre</a></li>
-          <li role="none"><a class="title" href="#services" role="menuitem">Serviços</a></li>
-          <li role="none"><a class="title" href="#testimonials" role="menuitem">Depoimentos</a></li>
-          <li role="none"><a class="title" href="#contact" role="menuitem">Contato</a></li>
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+  <header class="site-header" id="header">
+    <nav class="container" aria-label="Menu principal">
+      <a class="logo" href="#home" aria-label="Dra. Letícia Penin - Página inicial">Dra. Letícia <span>Penin</span></a>
+      <div class="menu" id="menu">
+        <ul>
+          <li><a href="#home">Início</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#services">Serviços</a></li>
+          <li><a href="#testimonials">Depoimentos</a></li>
+          <li><a href="#contact">Contato</a></li>
         </ul>
       </div>
-      <button class="toggle icon-menu" aria-label="Abrir menu" aria-expanded="false"></button>
-      <button class="toggle icon-close" aria-label="Fechar menu"></button>
+      <button class="menu-toggle icon-menu" type="button" aria-label="Abrir menu" aria-controls="menu" aria-expanded="false"></button>
     </nav>
   </header>
 
-  <main id="main-content" role="main">
+  <main id="main-content">
     <section class="section" id="home" aria-labelledby="home-title">
-      <div class="container grid">
-        <div class="image">
-          <img src="draleticiapenin-foto.jpeg" alt="Dra. Letícia Penin sorrindo em seu consultório odontológico" loading="eager" />
+      <div class="container split">
+        <div class="media-frame reveal">
+          <picture>
+            <source type="image/webp" srcset="img/hero-480.webp 480w, img/hero-800.webp 800w" sizes="(max-width: 600px) 90vw, 360px" />
+            <img src="img/hero-800.jpg" width="360" height="450" alt="Dra. Letícia Penin sorrindo em seu consultório odontológico" fetchpriority="high" />
+          </picture>
         </div>
-        <div class="text">
+        <div class="text reveal">
           <span class="eyebrow">Odontologia em Fortaleza-CE</span>
-          <h1 id="home-title" class="title">A excelência para seu sorriso</h1>
-          <p>
+          <h1 id="home-title" class="title title--hero">A excelência para seu sorriso</h1>
+          <p class="lead">
             Combinamos a precisão da tecnologia moderna com um olhar humano e individualizado. Onde cada detalhe do seu tratamento é planejado para transformar não apenas o seu sorriso, mas a sua autoestima.
           </p>
-          <a class="button" href="#contact" aria-describedby="home-title">Agendar consulta</a>
+          <div class="actions">
+            <a class="btn btn--primary" href="https://wa.me/558594490542?text=Olá, gostaria de agendar uma consulta com a Dra. Letícia Penin" target="_blank" rel="noopener noreferrer">
+              <i class="icon-whatsapp" aria-hidden="true"></i>Agendar consulta
+            </a>
+            <a class="btn btn--secondary" href="#contact">Ver endereços</a>
+          </div>
+          <ul class="trust" aria-label="Por que confiar">
+            <li><span class="stars" aria-hidden="true">★</span><strong>5,0</strong>&nbsp;no Google</li>
+            <li><i class="icon-teeth" aria-hidden="true"></i>CRO-CE 14582</li>
+            <li><i class="icon-map-pin" aria-hidden="true"></i>2 consultórios em Fortaleza</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <div class="divider-1" aria-hidden="true"></div>
-
-    <section class="section" id="about" aria-labelledby="about-title">
-      <div class="container grid">
-        <div class="image">
-          <video autoplay loop muted playsinline preload="metadata" poster="sobre-dra-leticia-poster.jpg">
-            <source src="sobre-dra-leticia.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos.
+    <section class="section section--soft" id="about" aria-labelledby="about-title">
+      <div class="container split">
+        <div class="media-frame media-frame--left reveal">
+          <video muted loop playsinline preload="none" poster="img/about-poster-800.webp" width="360" height="450" aria-label="Dra. Letícia Penin em atendimento">
+            <source src="img/about-720.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="text">
+        <div class="text reveal">
           <span class="eyebrow">Sobre mim</span>
           <h2 id="about-title" class="title">Conheça minha história</h2>
-          <p>Graduada pela UFC, trago uma bagagem rica de vivências na saúde pública e privada, o que me permitiu aperfeiçoar um atendimento verdadeiramente humanizado. Atuo de forma multidisciplinar, integrando estética e saúde profunda para oferecer soluções completas.</p>
+          <p class="lead">Graduada pela UFC, trago uma bagagem rica de vivências na saúde pública e privada, o que me permitiu aperfeiçoar um atendimento verdadeiramente humanizado. Atuo de forma multidisciplinar, integrando estética e saúde profunda para oferecer soluções completas.</p>
         </div>
       </div>
     </section>
 
-    <div class="divider-2" aria-hidden="true"></div>
-
     <section class="section" id="services" aria-labelledby="services-title">
-      <div class="container grid">
-        <header>
+      <div class="container">
+        <header class="section-header reveal">
           <span class="eyebrow">O que oferecemos</span>
           <h2 id="services-title" class="title">Serviços Odontológicos em Fortaleza</h2>
-          <p class="subtitle">Cuidado completo em saúde e estética bucal em Fortaleza. Conheça nossos tratamentos:</p>
+          <p class="lead">Cuidado completo em saúde e estética bucal em Fortaleza. Conheça nossos tratamentos:</p>
         </header>
-        <div class="cards grid">
-          <article class="card">
-            <i class="icon-Vector" aria-hidden="true"></i>
-            <h3 class="title">Clínica Geral</h3>
+        <div class="cards">
+          <article class="card reveal">
+            <i class="card__icon icon-Vector" aria-hidden="true"></i>
+            <h3>Clínica Geral</h3>
             <p>Consultas, diagnósticos, limpeza profissional, restaurações em resina e todos os cuidados essenciais para sua saúde bucal com tecnologia digital</p>
           </article>
-          <article class="card">
-            <i class="icon-teeth" aria-hidden="true"></i>
-            <h3 class="title">Prótese Dentária</h3>
+          <article class="card reveal">
+            <i class="card__icon icon-teeth" aria-hidden="true"></i>
+            <h3>Prótese Dentária</h3>
             <p>Próteses fixas e removíveis, coroas para reabilitação oral completa e recuperação da função mastigatória</p>
           </article>
-          <article class="card">
-            <i class="icon-tooth-brush" aria-hidden="true"></i>
-            <h3 class="title">Estética Dental</h3>
+          <article class="card reveal">
+            <i class="card__icon icon-tooth-brush" aria-hidden="true"></i>
+            <h3>Estética Dental</h3>
             <p>Clareamento dental, facetas de resina e restaurações estéticas para um sorriso mais natural e harmonioso</p>
           </article>
-          <article class="card">
-            <i class="icon-dental-tool-svgrepo-com" aria-hidden="true"></i>
-            <h3 class="title">Cirurgias</h3>
+          <article class="card reveal">
+            <i class="card__icon icon-dental-tool-svgrepo-com" aria-hidden="true"></i>
+            <h3>Cirurgias</h3>
             <p>Extração de dentes, gengivoplastias, extração de siso e outros procedimentos cirúrgicos odontológicos</p>
           </article>
         </div>
       </div>
     </section>
 
-    <div class="divider-1" aria-hidden="true"></div>
-
     <section class="section" id="testimonials" aria-labelledby="testimonials-title">
       <div class="container">
-        <!-- Sprite do logo do Google (reutilizado nos cards) -->
+        <!-- Logo do Google, reutilizado nos depoimentos -->
         <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
           <symbol id="g-logo" viewBox="0 0 48 48">
             <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
@@ -255,186 +250,147 @@
           </symbol>
         </svg>
 
-        <header>
+        <header class="section-header reveal">
           <span class="eyebrow">Quem confia</span>
           <h2 id="testimonials-title" class="title">Depoimentos dos nossos pacientes</h2>
-          <p class="subtitle reviews-summary">
+          <p class="lead rating">
             <span class="stars" role="img" aria-label="Nota 5 de 5">★★★★★</span>
             <strong>5,0</strong> em avaliações reais no
             <svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Google
           </p>
         </header>
-        <div class="testimonials swiper" role="region" aria-label="Depoimentos de pacientes">
-          <div class="swiper-wrapper">
-            <article class="testimonial swiper-slide">
-              <blockquote>
-                <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
-                <p>                  Hoje mais uma vez fui atendido pela Dra. Letícia Penin, e novamente recebi um atendimento super cuidadoso, um procedimento super bem feito por uma profissional que sabe o que está fazendo. Recomendo!
-                </p>
-                <cite>
-                  <span class="avatar" aria-hidden="true">R</span>
-                  <span class="cite-meta">
-                    <span class="cite-name">Raimundo Vinícius Gomes</span>
-                    <span class="cite-source"><svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Avaliação no Google</span>
-                  </span>
-                </cite>
-              </blockquote>
-            </article>
 
-            <article class="testimonial swiper-slide">
+        <div class="carousel reveal" data-carousel>
+          <div class="carousel__track" tabindex="0" role="region" aria-label="Depoimentos de pacientes (role para o lado)">
+            <article class="testimonial">
+              <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
               <blockquote>
-                <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
-                <p>                  Excelente profissional, sempre preocupada com o bem-estar e saúde do paciente!
-                </p>
-                <cite>
-                  <span class="avatar" aria-hidden="true">R</span>
-                  <span class="cite-meta">
-                    <span class="cite-name">Ramon Lobo</span>
-                    <span class="cite-source"><svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Avaliação no Google</span>
-                  </span>
-                </cite>
+                <p>Hoje mais uma vez fui atendido pela Dra. Letícia Penin, e novamente recebi um atendimento super cuidadoso, um procedimento super bem feito por uma profissional que sabe o que está fazendo. Recomendo!</p>
               </blockquote>
+              <footer>
+                <span class="avatar" aria-hidden="true">R</span>
+                <cite>Raimundo Vinícius Gomes<small><svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Avaliação no Google</small></cite>
+              </footer>
             </article>
-
-            <article class="testimonial swiper-slide">
+            <article class="testimonial">
+              <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
               <blockquote>
-                <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
-                <p>                  A Dra. Letícia é super atenciosa e muito profissional. Recomendo!!!
-                </p>
-                <cite>
-                  <span class="avatar" aria-hidden="true">R</span>
-                  <span class="cite-meta">
-                    <span class="cite-name">Raul Aquino</span>
-                    <span class="cite-source"><svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Avaliação no Google</span>
-                  </span>
-                </cite>
+                <p>Excelente profissional, sempre preocupada com o bem-estar e saúde do paciente!</p>
               </blockquote>
+              <footer>
+                <span class="avatar" aria-hidden="true">R</span>
+                <cite>Ramon Lobo<small><svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Avaliação no Google</small></cite>
+              </footer>
             </article>
-
-            <article class="testimonial swiper-slide">
+            <article class="testimonial">
+              <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
               <blockquote>
-                <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
-                <p>                  Excelente profissional! Muito cuidadosa e segura. Indico muito.
-                </p>
-                <cite>
-                  <span class="avatar" aria-hidden="true">M</span>
-                  <span class="cite-meta">
-                    <span class="cite-name">Monalisa Sousa Duarte</span>
-                    <span class="cite-source"><svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Avaliação no Google</span>
-                  </span>
-                </cite>
+                <p>A Dra. Letícia é super atenciosa e muito profissional. Recomendo!!!</p>
               </blockquote>
+              <footer>
+                <span class="avatar" aria-hidden="true">R</span>
+                <cite>Raul Aquino<small><svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Avaliação no Google</small></cite>
+              </footer>
             </article>
-
-            <article class="testimonial swiper-slide">
+            <article class="testimonial">
+              <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
               <blockquote>
-                <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
-                <p>                  Tive uma experiência excelente com a dentista Dra. Letícia Penin. Desde o primeiro atendimento, fui recebida com muita atenção, carinho e profissionalismo. O serviço prestado foi impecável, com explicações claras e muito cuidado durante todo o procedimento, o que me deixou bastante segura e confortável. Além disso, o espaço é extremamente organizado, limpo e acolhedor. Sem dúvida, um atendimento humanizado e de alta qualidade.
-                </p>
-                <cite>
-                  <span class="avatar" aria-hidden="true">B</span>
-                  <span class="cite-meta">
-                    <span class="cite-name">Brenda Lima</span>
-                    <span class="cite-source"><svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Avaliação no Google</span>
-                  </span>
-                </cite>
+                <p>Excelente profissional! Muito cuidadosa e segura. Indico muito.</p>
               </blockquote>
+              <footer>
+                <span class="avatar" aria-hidden="true">M</span>
+                <cite>Monalisa Sousa Duarte<small><svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Avaliação no Google</small></cite>
+              </footer>
             </article>
-
-            <article class="testimonial swiper-slide">
+            <article class="testimonial">
+              <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
               <blockquote>
-                <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
-                <p>                  Excelente atendimento! A doutora é muito atenciosa e cuidadosa, além de oferecer um espaço extremamente limpo e confortável. Recomendo!
-                </p>
-                <cite>
-                  <span class="avatar" aria-hidden="true">J</span>
-                  <span class="cite-meta">
-                    <span class="cite-name">Joshuel Machado</span>
-                    <span class="cite-source"><svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Avaliação no Google</span>
-                  </span>
-                </cite>
+                <p>Tive uma experiência excelente com a dentista Dra. Letícia Penin. Desde o primeiro atendimento, fui recebida com muita atenção, carinho e profissionalismo. O serviço prestado foi impecável, com explicações claras e muito cuidado durante todo o procedimento, o que me deixou bastante segura e confortável. Além disso, o espaço é extremamente organizado, limpo e acolhedor. Sem dúvida, um atendimento humanizado e de alta qualidade.</p>
               </blockquote>
+              <footer>
+                <span class="avatar" aria-hidden="true">B</span>
+                <cite>Brenda Lima<small><svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Avaliação no Google</small></cite>
+              </footer>
+            </article>
+            <article class="testimonial">
+              <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
+              <blockquote>
+                <p>Excelente atendimento! A doutora é muito atenciosa e cuidadosa, além de oferecer um espaço extremamente limpo e confortável. Recomendo!</p>
+              </blockquote>
+              <footer>
+                <span class="avatar" aria-hidden="true">J</span>
+                <cite>Joshuel Machado<small><svg class="g-icon" aria-hidden="true" focusable="false"><use href="#g-logo"/></svg>Avaliação no Google</small></cite>
+              </footer>
             </article>
           </div>
-
-          <!-- Paginação -->
-          <div class="swiper-pagination" role="tablist" aria-label="Navegação dos depoimentos"></div>
+          <div class="carousel__controls" hidden>
+            <button class="carousel__arrow" type="button" data-prev aria-label="Depoimentos anteriores">‹</button>
+            <div class="carousel__dots" data-dots></div>
+            <button class="carousel__arrow" type="button" data-next aria-label="Próximos depoimentos">›</button>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="divider-2" aria-hidden="true"></div>
-
-    <section class="section" id="contact" aria-labelledby="contact-title">
-      <div class="container grid">
-        <div class="text">
-          <span class="eyebrow">Contato</span>
-          <h2 id="contact-title" class="title">Fale com a equipe</h2>
-          <p>
-            Entre em contato com a equipe da <strong>Dra. Letícia Penin</strong> para agendar sua consulta odontológica em Fortaleza.
-            Estamos prontos para cuidar do seu sorriso com excelência e dedicação na capital cearense.
-          </p>
-          <a href="https://wa.me/558594490542?text=Olá, gostaria de agendar uma consulta com a Dra. Letícia Penin" 
-             class="button" target="_blank" rel="noopener noreferrer" aria-label="Entrar em contato via WhatsApp"> 
-            <i class="icon-whatsapp" aria-hidden="true"></i>Entrar em contato
-          </a>
-        </div>
-
-        <div class="links">
-          <ul class="grid">
+    <section class="section section--soft" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="split">
+          <div class="text reveal">
+            <span class="eyebrow">Contato</span>
+            <h2 id="contact-title" class="title">Fale com a equipe</h2>
+            <p class="lead">
+              Entre em contato com a equipe da <strong>Dra. Letícia Penin</strong> para agendar sua consulta odontológica em Fortaleza.
+              Estamos prontos para cuidar do seu sorriso com excelência e dedicação na capital cearense.
+            </p>
+            <a class="btn btn--whatsapp" href="https://wa.me/558594490542?text=Olá, gostaria de agendar uma consulta com a Dra. Letícia Penin" target="_blank" rel="noopener noreferrer">
+              <i class="icon-whatsapp" aria-hidden="true"></i>Entrar em contato
+            </a>
+          </div>
+          <ul class="contact-list reveal">
             <li><i class="icon-phone" aria-hidden="true"></i><a href="tel:+558594490542">(85) 9449-0542</a></li>
-            <li><i class="icon-map-pin" aria-hidden="true"></i><strong>Marv Clinic:</strong> R. Martinho Rodrigues, 129 - Fátima, Fortaleza-CE</li>
-            <li><i class="icon-map-pin" aria-hidden="true"></i><strong>Harmony Premium:</strong> Av. Humberto Monte, 2929 - Pici, Sala 617A - Fortaleza-CE</li>
+            <li><i class="icon-map-pin" aria-hidden="true"></i><span><strong>Marv Clinic:</strong> R. Martinho Rodrigues, 129 - Fátima, Fortaleza-CE</span></li>
+            <li><i class="icon-map-pin" aria-hidden="true"></i><span><strong>Harmony Premium:</strong> Av. Humberto Monte, 2929 - Pici, Sala 617A - Fortaleza-CE</span></li>
             <li><i class="icon-mail" aria-hidden="true"></i><a href="mailto:draleticiapenin@gmail.com">draleticiapenin@gmail.com</a></li>
           </ul>
         </div>
-      </div>
-      
-      <div class="maps-container">
-        <div class="map-item">
-          <h3>Marv Clinic - Fátima</h3>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.2847!2d-38.5445!3d-3.7463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c748e0e0e0e0e0e%3A0x0!2sR.%20Martinho%20Rodrigues%2C%20129%20-%20F%C3%A1tima%2C%20Fortaleza%20-%20CE!5e0!3m2!1spt-BR!2sbr!4v1234567890" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <div class="map-item">
-          <h3>Harmony Premium - Pici</h3>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.0!2d-38.5423!3d-3.7500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c748e0e0e0e0e0e%3A0x0!2sAv.%20Humberto%20Monte%2C%202929%20-%20Pici%2C%20Fortaleza%20-%20CE!5e0!3m2!1spt-BR!2sbr!4v1234567890" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+        <div class="maps">
+          <div class="map-card reveal">
+            <h3>Marv Clinic - Fátima</h3>
+            <iframe title="Mapa: Marv Clinic, R. Martinho Rodrigues, 129 - Fátima, Fortaleza" src="https://maps.google.com/maps?q=R.%20Martinho%20Rodrigues%2C%20129%20-%20F%C3%A1tima%2C%20Fortaleza%20-%20CE&z=16&hl=pt-BR&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            <a href="https://www.google.com/maps/search/?api=1&query=R.%20Martinho%20Rodrigues%2C%20129%20-%20F%C3%A1tima%2C%20Fortaleza%20-%20CE" target="_blank" rel="noopener noreferrer">Abrir no Google Maps ↗</a>
+          </div>
+          <div class="map-card reveal">
+            <h3>Harmony Premium - Pici</h3>
+            <iframe title="Mapa: Harmony Premium Business, Av. Humberto Monte, 2929 - Pici, Fortaleza" src="https://maps.google.com/maps?q=Av.%20Humberto%20Monte%2C%202929%20-%20Pici%2C%20Fortaleza%20-%20CE&z=16&hl=pt-BR&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            <a href="https://www.google.com/maps/search/?api=1&query=Av.%20Humberto%20Monte%2C%202929%20-%20Pici%2C%20Fortaleza%20-%20CE" target="_blank" rel="noopener noreferrer">Abrir no Google Maps ↗</a>
+          </div>
         </div>
       </div>
     </section>
-
-    <div class="divider-1" aria-hidden="true"></div>
-
   </main>
 
-  <footer class="section" role="contentinfo">
-    <div class="container grid">
-      <div class="brand">
-        <a class="logo logo-alt" href="#home" aria-label="Dra. Letícia Penin - Voltar ao topo">Dra. Letícia<span>Penin</span></a>
+  <footer class="site-footer section">
+    <div class="container">
+      <div>
+        <a class="logo" href="#home" aria-label="Dra. Letícia Penin - Voltar ao topo">Dra. Letícia <span>Penin</span></a>
         <p>©<span id="year">2026</span> Dra. Letícia Penin</p>
         <p>Todos os direitos reservados</p>
         <p><small>CRO-CE 14582 | Responsável Técnico: Dra. Letícia Penin</small></p>
       </div>
-
-      <div class="social grid" role="navigation" aria-label="Redes sociais">
+      <nav class="social" aria-label="Redes sociais">
         <a href="https://www.instagram.com/draleticiapenin/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Dra. Letícia Penin">
           <i class="icon-instagram" aria-hidden="true"></i>
         </a>
-      </div>
+      </nav>
     </div>
   </footer>
 
-  <!-- WhatsApp Float Button -->
-  <a href="https://wa.me/558594490542?text=Olá, gostaria de agendar uma consulta" 
-     class="whatsapp-float" target="_blank" rel="noopener noreferrer" 
-     aria-label="Conversar no WhatsApp">
+  <a href="https://wa.me/558594490542?text=Olá, gostaria de agendar uma consulta" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
     <i class="icon-whatsapp" aria-hidden="true"></i>
   </a>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="https://unpkg.com/scrollreveal@4/dist/scrollreveal.min.js" defer></script>
   <script src="main.js" defer></script>
-
 </body>
 
 </html>

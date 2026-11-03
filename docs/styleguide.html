@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!-- Guia visual do design system do site. Abra este arquivo no navegador, direto do repo:
+     ele usa os mesmos CSS do site (../site/css) e não é publicado (o site é só site/). -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Guia visual — Dra. Letícia Penin</title>
+  <link rel="stylesheet" href="../site/css/tokens.css" />
+  <link rel="stylesheet" href="../site/css/base.css" />
+  <link rel="stylesheet" href="../site/css/components.css" />
+  <link rel="stylesheet" href="../site/assets/icomoon/style.css" />
+  <style>
+    .sg { padding-block: var(--space-12); border-bottom: 1px solid var(--border); }
+    .sg h2 { margin-bottom: var(--space-6); font-size: var(--text-xl); }
+    .sg .row { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: flex-start; }
+    .swatch { width: 9.5rem; font-size: var(--text-xs); }
+    .swatch div { height: 4rem; border-radius: var(--radius-sm); border: 1px solid var(--border); margin-bottom: var(--space-2); }
+    .token { font-family: ui-monospace, monospace; font-size: var(--text-xs); color: var(--text-muted); }
+    .space { background: var(--accent-soft); height: 1rem; border-radius: 3px; }
+    .demo-card { width: 16rem; }
+    .demo-wide { width: min(100%, 24rem); }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="sg">
+      <span class="eyebrow">Design system</span>
+      <h1 class="title title--hero">Dra. Letícia Penin</h1>
+      <p class="lead">Tokens em <code>site/css/tokens.css</code>, componentes em <code>components.css</code>, composição das seções em <code>sections.css</code>. As seções usam só os tokens semânticos.</p>
+    </section>
+
+    <section class="sg">
+      <h2>Cores semânticas</h2>
+      <div class="row">
+        <div class="swatch"><div style="background: var(--brand)"></div>--brand<br><span class="token">brown-700 #473835</span></div>
+        <div class="swatch"><div style="background: var(--accent)"></div>--accent<br><span class="token">gold-500 #b0894a</span></div>
+        <div class="swatch"><div style="background: var(--accent-soft)"></div>--accent-soft<br><span class="token">gold-200 #e0cf9a</span></div>
+        <div class="swatch"><div style="background: var(--text-muted)"></div>--text-muted<br><span class="token">brown-500 #6b5750</span></div>
+        <div class="swatch"><div style="background: var(--surface)"></div>--surface<br><span class="token">cream-50 #fffdf3</span></div>
+        <div class="swatch"><div style="background: var(--surface-soft)"></div>--surface-soft<br><span class="token">cream-100 #f3eec8</span></div>
+        <div class="swatch"><div style="background: var(--surface-tint)"></div>--surface-tint<br><span class="token">cream-200 #efe6c2</span></div>
+        <div class="swatch"><div style="background: var(--surface-dark)"></div>--surface-dark<br><span class="token">brown-900 #2f2522</span></div>
+        <div class="swatch"><div style="background: var(--whatsapp)"></div>--whatsapp<br><span class="token">#1a7f45 (AA com branco)</span></div>
+      </div>
+    </section>
+
+    <section class="sg">
+      <h2>Tipografia</h2>
+      <p class="token">--text-3xl · Poppins 700</p><p class="title title--hero">A excelência para seu sorriso</p>
+      <p class="token">--text-2xl · Poppins 700</p><p class="title">Conheça minha história</p>
+      <p class="token">--text-xl · Poppins 700</p><h3>Clínica Geral</h3>
+      <p class="token">--text-lg · DM Sans 400 (lead)</p><p class="lead" style="margin-top:0">Cuidado completo em saúde e estética bucal em Fortaleza.</p>
+      <p class="token">--text-md · DM Sans 400 (corpo)</p><p>Consultas, diagnósticos, limpeza profissional e restaurações em resina.</p>
+      <p class="token">eyebrow · DM Sans 600, caixa alta</p><span class="eyebrow">O que oferecemos</span>
+    </section>
+
+    <section class="sg">
+      <h2>Espaços (escala de 4 px)</h2>
+      <div class="row" style="flex-direction: column">
+        <div style="width: var(--space-2)" class="space"></div><span class="token">--space-2 · 0.5rem</span>
+        <div style="width: var(--space-4)" class="space"></div><span class="token">--space-4 · 1rem</span>
+        <div style="width: var(--space-8)" class="space"></div><span class="token">--space-8 · 2rem</span>
+        <div style="width: var(--space-14)" class="space"></div><span class="token">--space-14 · 3.5rem</span>
+      </div>
+    </section>
+
+    <section class="sg">
+      <h2>Botões</h2>
+      <div class="actions">
+        <a class="btn btn--primary" href="#"><i class="icon-whatsapp" aria-hidden="true"></i>Agendar consulta</a>
+        <a class="btn btn--secondary" href="#">Ver endereços</a>
+        <a class="btn btn--whatsapp" href="#"><i class="icon-whatsapp" aria-hidden="true"></i>Entrar em contato</a>
+      </div>
+    </section>
+
+    <section class="sg">
+      <h2>Selos de confiança e avaliação</h2>
+      <ul class="trust" style="margin-top:0">
+        <li><span class="stars" aria-hidden="true">★</span><strong>5,0</strong>&nbsp;no Google</li>
+        <li><i class="icon-teeth" aria-hidden="true"></i>CRO-CE 14582</li>
+        <li><i class="icon-map-pin" aria-hidden="true"></i>2 consultórios em Fortaleza</li>
+      </ul>
+    </section>
+
+    <section class="sg">
+      <h2>Card de serviço e depoimento</h2>
+      <div class="row">
+        <article class="card demo-card">
+          <i class="card__icon icon-tooth-brush" aria-hidden="true"></i>
+          <h3>Estética Dental</h3>
+          <p>Clareamento dental, facetas de resina e restaurações estéticas.</p>
+        </article>
+        <article class="testimonial demo-card">
+          <span class="stars" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
+          <blockquote><p>Excelente profissional! Muito cuidadosa e segura.</p></blockquote>
+          <footer><span class="avatar" aria-hidden="true">M</span><cite>Nome do paciente<small>Avaliação no Google</small></cite></footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="sg">
+      <h2>Moldura de mídia</h2>
+      <div class="row" style="gap: var(--space-14); padding: var(--space-8)">
+        <div class="media-frame"><img src="../site/img/hero-480.webp" width="360" height="450" alt="Exemplo: moldura padrão" /></div>
+        <div class="media-frame media-frame--left"><img src="../site/img/about-poster-480.webp" width="360" height="450" alt="Exemplo: moldura à esquerda" /></div>
+      </div>
+    </section>
+
+    <section class="sg">
+      <h2>Lista de contato</h2>
+      <ul class="contact-list demo-wide">
+        <li><i class="icon-phone" aria-hidden="true"></i><a href="#">(85) 9449-0542</a></li>
+        <li><i class="icon-map-pin" aria-hidden="true"></i><span><strong>Consultório:</strong> endereço completo</span></li>
+        <li><i class="icon-mail" aria-hidden="true"></i><a href="#">email@exemplo.com</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
