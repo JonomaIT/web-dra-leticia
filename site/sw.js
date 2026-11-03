@@ -1,29 +1,31 @@
-const CACHE_NAME = 'dra-leticia-v2.2.0'
+// Network-first: sempre tenta a versão nova; o cache só serve offline.
+// Ao mudar a lista abaixo, suba a versão (o cache antigo é apagado na ativação).
+const CACHE_NAME = 'dra-leticia-v3.0.0'
 const PRECACHE = [
   '/',
   '/index.html',
-  '/style.css',
+  '/css/tokens.css',
+  '/css/base.css',
+  '/css/components.css',
+  '/css/sections.css',
   '/main.js',
-  '/draleticiapenin-foto.jpeg',
-  '/sobre-dra-leticia-poster.jpg',
-  '/assets/logo.png',
   '/assets/icomoon/style.css',
   '/assets/icomoon/fonts/icomoon.woff',
-  'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap',
-  'https://unpkg.com/swiper@11/swiper-bundle.min.css',
-  'https://unpkg.com/swiper@11/swiper-bundle.min.js',
-  'https://unpkg.com/scrollreveal@4/dist/scrollreveal.min.js'
+  '/fonts/dm-sans-latin-400-normal.woff2',
+  '/fonts/dm-sans-latin-500-normal.woff2',
+  '/fonts/dm-sans-latin-700-normal.woff2',
+  '/fonts/poppins-latin-600-normal.woff2',
+  '/fonts/poppins-latin-700-normal.woff2',
+  '/img/hero-480.webp',
+  '/img/hero-800.webp',
+  '/img/about-poster-800.webp',
 ]
 
-// Install: pré-carrega os arquivos e assume controle imediatamente
 self.addEventListener('install', (event) => {
   self.skipWaiting()
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE)).catch(() => {})
-  )
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE)).catch(() => {}))
 })
 
-// Activate: remove caches antigos e passa a controlar as abas já abertas
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async () => {
@@ -34,11 +36,11 @@ self.addEventListener('activate', (event) => {
   )
 })
 
-// Fetch: network-first — sempre tenta a versão fresca; usa o cache só como
-// fallback (offline). Assim atualizações aparecem no próximo carregamento.
 self.addEventListener('fetch', (event) => {
   const { request } = event
-  if (request.method !== 'GET') return
+  const url = new URL(request.url)
+  // Só o próprio site; mapas e outros domínios seguem direto. Vídeo (Range) também.
+  if (request.method !== 'GET' || url.origin !== self.location.origin || request.headers.has('range')) return
 
   event.respondWith(
     (async () => {

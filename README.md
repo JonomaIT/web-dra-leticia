@@ -15,6 +15,22 @@ Cache: HTML, CSS, JS, JSON, XML and text are always revalidated; images, video a
 
 The site does not depend on the lab: the platform parameters it needs (`global/platform`) and the zone settings (`global/cloudflare-zone`) are persistent.
 
+## Design system
+
+A small design system of its own, no framework and nothing from third parties at runtime:
+
+| File | What |
+|---|---|
+| `site/css/tokens.css` | the brand: colors (palette and semantic names), type scale, spacing, radii, shadows, motion, the local fonts |
+| `site/css/base.css` | reset, typography, focus, layout helpers, the scroll reveal (content stays visible without JS) |
+| `site/css/components.css` | button, section header, trust badges, rating, media frame, service card, testimonial, carousel, contact list, map, header and menu, footer, WhatsApp button |
+| `site/css/sections.css` | page composition only (backgrounds, order) |
+| `docs/styleguide.html` | every token and component on one page: open it from the repo (not published) |
+
+Sections use semantic tokens only (`--brand`, `--accent`, `--surface`...): changing the brand is changing `tokens.css`.
+
+`design/` keeps what is not published: the original photos and video (the site serves smaller WebP and a 720 px video) and the icon font project (`design/icomoon/selection.json`, open it in icomoon.io to add icons).
+
 ## Change the site
 
 Edit `site/`, open a pull request (the app contract is checked), merge: the deploy runs by itself.
