@@ -66,13 +66,20 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { rootMargin: '0px 0px -10% 0px' })
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el))
 
-/* ---- Vídeo do "Sobre": só baixa e toca quando aparece ---- */
+/* ---- Vídeo do "Sobre": só baixa e toca quando aparece ----
+   Com "reduzir animações" no sistema, não toca sozinho: aparecem os controles e a pessoa escolhe.
+   Se o navegador bloquear a reprodução automática (ex.: iPhone em economia de bateria), idem. */
 const video = document.querySelector('#about video')
-if (video && !reducedMotion) {
-  new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) video.play().catch(() => {})
-    else video.pause()
-  }, { threshold: 0.25 }).observe(video)
+if (video) {
+  const showControls = () => video.setAttribute('controls', '')
+  if (reducedMotion) {
+    showControls()
+  } else {
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) video.play().catch(showControls)
+      else video.pause()
+    }, { threshold: 0.25 }).observe(video)
+  }
 }
 
 /* ---- Carrossel de depoimentos: pontos, setas e troca automática ---- */
