@@ -1,0 +1,47 @@
+name: CI
+
+# Logic lives in JonomaIT/pipelines. A static site without a build: the files in site/ are what
+# is published.
+#   pull request  app contract check
+#   main          deploy to production (deploy-app): the site's infrastructure, the files, an
+#                 invalidation. A customer's site, permanent: it does not depend on the lab
+#   manual        Actions → CI → Run workflow: deploy this commit; "destroy" removes the site
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      destroy:
+        type: boolean
+        default: false
+        description: Remove the site from production
+
+permissions:
+  contents: read
+  id-token: write # OIDC with AWS (deploy role in the production Environment)
+
+jobs:
+  contract:
+    name: app contract
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: App contract
+        uses: JonomaIT/pipelines/.github/actions/contract-check@v2.6.0
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    uses: JonomaIT/pipelines/.github/workflows/deploy-app.yml@v2.6.0
+    with:
+      environment: production
+      destroy: ${{ inputs.destroy || false }}
+    secrets:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_JONOMA }}

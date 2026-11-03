@@ -1,0 +1,36 @@
+{
+  "name": "Dra. Letícia Penin - Cirurgiã Dentista",
+  "short_name": "Dra. Letícia",
+  "description": "Cirurgiã-dentista com atuação em estética dental, prótese e clínica geral. Atendimento humanizado com tecnologia moderna.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdf3",
+  "theme_color": "#473835",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["health", "medical", "dentist"],
+  "lang": "pt-BR",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "/draleticiapenin-foto.jpeg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide",
+      "label": "Dra. Letícia Penin - Página inicial"
+    }
+  ]
+}
