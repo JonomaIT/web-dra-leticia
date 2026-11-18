@@ -96,6 +96,17 @@ h3 {
 }
 
 /* ------ Acessibilidade ------------------- */
+/* Taps answer at once: no double-tap zoom on controls. */
+a,
+button,
+input,
+label,
+select,
+textarea,
+summary {
+  touch-action: manipulation;
+}
+
 .skip-link {
   position: absolute;
   left: var(--space-4);

@@ -121,17 +121,27 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   controls.hidden = false
   renderDots()
 
-  // Troca sozinha a cada 6 s; para com o mouse em cima, com foco dentro ou com "movimento reduzido".
+  // Troca sozinha a cada 6 s; para com o mouse em cima, com foco dentro, com um toque, com o botão
+  // de pausa (WCAG 2.2.2) ou com "movimento reduzido" (aí nem começa).
   if (!reducedMotion) {
-    let paused = false
-    const pause = () => (paused = true)
-    const resume = () => (paused = false)
-    carousel.addEventListener('mouseenter', pause)
-    carousel.addEventListener('mouseleave', resume)
-    carousel.addEventListener('focusin', pause)
-    carousel.addEventListener('focusout', resume)
+    let hovered = false
+    let stopped = false
+    const toggle = carousel.querySelector('[data-toggle]')
+    const setStopped = (value) => {
+      stopped = value
+      toggle.setAttribute('aria-pressed', String(stopped))
+      toggle.setAttribute('aria-label', stopped ? 'Retomar a troca automática' : 'Pausar a troca automática')
+      toggle.textContent = stopped ? '►' : '❚❚'
+    }
+    toggle.hidden = false
+    toggle.addEventListener('click', () => setStopped(!stopped))
+    carousel.addEventListener('mouseenter', () => (hovered = true))
+    carousel.addEventListener('mouseleave', () => (hovered = false))
+    carousel.addEventListener('focusin', () => (hovered = true))
+    carousel.addEventListener('focusout', () => (hovered = false))
+    track.addEventListener('touchstart', () => setStopped(true), { passive: true })
     setInterval(() => {
-      if (!paused && !document.hidden) goTo(current() + 1 >= pages() ? 0 : current() + 1)
+      if (!hovered && !stopped && !document.hidden) goTo(current() + 1 >= pages() ? 0 : current() + 1)
     }, 6000)
   }
 })
